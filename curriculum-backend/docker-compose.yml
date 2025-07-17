@@ -1,0 +1,20 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - curriculum_data:/usr/src/app/uploads # Este volume mapeará o diretório 'uploads'
+    environment:
+      NODE_ENV: production
+      # USE_CLOUD_STORAGE: 'true' # COMENTE OU REMOVA ESTA LINHA para usar armazenamento local
+                                  # Descomente e defina como 'true' quando quiser Cloud Storage
+    restart: always
+
+volumes:
+  curriculum_data:

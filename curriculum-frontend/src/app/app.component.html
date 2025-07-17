@@ -1,0 +1,11 @@
+<header>
+  <nav>
+    <a routerLink="/profile">{{ loggedInUser ? 'Perfil de ' + loggedInUser.displayName : 'Perfil'}} </a>
+    <a routerLink="/curriculo">Importar Currículo</a>    
+    <a routerLink="/login" *ngIf="!loggedInUser">Entrar</a>
+    <a (click)="logout()" *ngIf="loggedInUser">Sair</a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

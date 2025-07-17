@@ -1,0 +1,30 @@
+<div class="curriculum-container">
+  <h2>Gerenciar Meu Currículo</h2>
+
+  <div *ngIf="userProfile">
+    <p class="info-message">Você já tem um currículo cadastrado. Submeter um novo substituirá o atual.</p>
+    </div>
+
+  <div class="upload-section">
+    <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.txt" style="display: none;" #fileInput>
+    <button class="select-file-button" (click)="fileInput.click()" [disabled]="uploading">
+      {{ selectedFile ? selectedFile.name : 'Selecione seu currículo (PDF, DOCX, TXT)' }}
+    </button>
+
+    <p class="file-info" *ngIf="selectedFile">Arquivo selecionado: <strong>{{ selectedFile.name }}</strong> ({{ (selectedFile.size / 1024 / 1024) | number:'1.2-2' }} MB)</p>
+
+    <button class="submit-button" (click)="onSubmit()" [disabled]="!selectedFile || uploading">
+      {{ uploading ? 'Enviando...' : 'Enviar Currículo' }}
+    </button>
+
+    <div *ngIf="uploadSuccess" class="success-message">
+      Currículo enviado com sucesso!
+    </div>
+
+    <div *ngIf="uploadError" class="error-message">
+      {{ uploadError }}
+    </div>
+  </div>
+
+  <button class="logout-button" (click)="logout()" [disabled]="uploading">Sair</button>
+</div>

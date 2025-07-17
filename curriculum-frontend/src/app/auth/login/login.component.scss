@@ -1,0 +1,47 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; // Ocupa a maior parte da tela
+  text-align: center;
+
+  h2 {
+    margin-bottom: 2rem;
+    color: #333;
+  }
+
+  button {
+    background-color: #4285f4; // Cor azul do Google
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; // Espaço entre o logo e o texto
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #357ae8; // Um pouco mais escuro ao passar o mouse
+    }
+
+    &:disabled {
+      background-color: #a6c9f7;
+      cursor: not-allowed;
+    }
+
+    .google-logo {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    color: #666;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,144 @@
+  .profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+  }
+  textarea.form-control {
+    resize: vertical;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .experience-item {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  .experience-item h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .experience-item p {
+    margin-bottom: 3px;
+    font-size: 0.95em;
+  }
+  .description-text {
+    white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+  }
+  .metadata-card {
+    border: 1px dashed #a7d9f9;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e6f7ff;
+    margin-top: 20px;
+  }
+  .metadata-card p {
+    margin-bottom: 5px;
+  }
+  .loading-message, .error-message {
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 600px;
+  }
+  .loading-message {
+    background-color: #e0f7fa;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+  .error-message {
+    background-color: #ffe0e0;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+  }
+
+  
+  .btn-add-experience {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
+  .btn-add-experience:hover {
+    background-color: #218838;
+  }
+  .experience-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .btn-edit {
+    background-color: #ffc107;
+    color: #333;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+  }
+  .btn-edit:hover {
+    background-color: #e0a800;
+  }
+  .btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+  }
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+  .no-data-message {
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+  }
+    

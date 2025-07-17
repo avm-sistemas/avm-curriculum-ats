@@ -1,0 +1,32 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h3>{{ isNewExperience ? 'Adicionar Nova Experiência' : 'Editar Experiência' }}</h3>
+    <form (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="company">Empresa:</label>
+        <input id="company" [(ngModel)]="localExperience.company" name="company" required>
+      </div>
+      <div class="form-group">
+        <label for="title">Cargo:</label>
+        <input id="title" [(ngModel)]="localExperience.title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="period">Período (Ex: Jan/2020 - Dez/2022 ou Jan/2020 - Presente):</label>
+        <input id="period" [(ngModel)]="localExperience.period" name="period">
+      </div>
+      <div class="form-group">
+        <label for="location">Local (Ex: Cidade, Estado - Remoto):</label>
+        <input id="location" [(ngModel)]="localExperience.location" name="location">
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição:</label>
+        <textarea id="description" [(ngModel)]="localExperience.description" name="description" rows="5"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-save">Salvar</button>
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
