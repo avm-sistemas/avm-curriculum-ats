@@ -1,0 +1,100 @@
+<div *ngIf="loading" class="loading-message">Carregando perfil...</div>
+<div *ngIf="error" class="error-message">{{ error }}</div>
+
+<div *ngIf="!loading && !error" class="profile-container">
+    <div style="text-align: center;">
+        <h2>Editar Perfil</h2>
+    </div>
+  
+  <form (ngSubmit)="saveProfile()">
+
+    <h3 class="mt-4">IDENTIFICAÇÃO</h3>
+
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input id="name" [(ngModel)]="profile!.name" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="profile!.email" name="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="phone">Telefone:</label>
+      <input id="phone" [(ngModel)]="profile!.phone" name="phone" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <h3 class="mt-4">RESUMO PROFISSIONAL</h3>
+      <!--<label for="professionalSummary">RESUMO PROFISSIONAL:</label>-->
+      <textarea id="professionalSummary" [(ngModel)]="profile!.professionalSummary" name="professionalSummary" rows="6" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <h3 class="mt-4">HABILIDADES (separadas por vírgula):</h3>
+      <!--<label for="skills">HABILIDADES (separadas por vírgula):</label>-->
+      <input id="skills" [(ngModel)]="skillsInput" name="skillsInput" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <h3 class="mt-4">CERTIFICAÇÕES & CURSOS</h3>
+      <!--<label for="certificationsAndCourses">CERTIFICAÇÕES & CURSOS:</label>-->
+      <textarea id="certificationsAndCourses" [(ngModel)]="profile!.certificationsAndCourses" name="certificationsAndCourses" rows="4" class="form-control"></textarea>
+    </div>
+
+    <h3 class="mt-4">EXPERIÊNCIA PROFISSIONAL</h3>
+    <div class="card p-3 mb-3" *ngFor="let exp of profile!.professionalExperience; let i = index">
+    <h4>{{ exp.title }}</h4>
+    <h5>{{ exp.company }}</h5>
+    <p><strong>Período:</strong> {{ exp.period }}</p>
+    <p><strong>Local:</strong> {{ exp.location }}</p>
+    <p><strong>Descrição:</strong></p>
+    <div class="description-text">{{ exp.description }}</div>
+    <div class="d-flex justify-content-end align-items-center mt-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary me-1" 
+                (click)="moveExperienceUp(i)" [disabled]="i === 0"
+                title="Mover experiência para cima">
+        <i class="bi bi-arrow-up"></i> Mover para Cima
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-secondary me-3" 
+                (click)="moveExperienceDown(i)" [disabled]="i === profile!.professionalExperience.length - 1"
+                title="Mover experiência para baixo">
+        <i class="bi bi-arrow-down"></i> Mover para Baixo
+        </button>
+
+        <button type="button" class="btn btn-sm btn-edit me-2" (click)="openEditExperienceModal(exp, i)">
+        <i class="bi bi-pencil"></i> Editar
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="onDeleteExperience(i)">
+        <i class="bi bi-trash"></i> Excluir
+        </button>
+    </div>
+    </div>
+    <button type="button" class="btn btn-primary mt-3" (click)="openNewExperienceModal()">
+    Adicionar Nova Experiência
+    </button>
+
+    <br><br>
+    <button type="button" class="btn btn-secondary mt-3 ms-2" (click)="exportToAtsModel()" 
+            title="Exportar perfil para um formato de texto simples, compatível com sistemas ATS">
+    <i class="bi bi-file-earmark-text"></i> Exportar para Modelo ATS
+    </button>    
+
+
+<div>
+  <h3 class="mt-4">Metadados do Último Currículo Enviado</h3>
+  <div class="metadata-card">
+    <p><strong>Nome do Arquivo:</strong> {{ filesMetadata?.originalFileName || 'N/A' }}</p>
+    <p><strong>Tipo MIME:</strong> {{ filesMetadata?.mimeType || 'N/A' }}</p>
+    <p><strong>Caminho Local:</strong> {{ filesMetadata?.localPath || filesMetadata?.cloudStoragePath || 'N/A' }}</p>
+    <p><strong>URL Local/Cloud:</strong> {{ filesMetadata?.localUrl || filesMetadata?.cloudStorageUrl || 'N/A' }}</p>
+    <p><strong>Data de Upload:</strong> {{ ( getDate(filesMetadata?.uploadDate) | date:'short' ) || 'N/A' }}</p>
+  </div>
+</div>
+
+<app-experience-modal
+  *ngIf="showExperienceModal"
+  [experience]="currentExperience"
+  (save)="onExperienceSaved($event)"
+  (cancel)="onExperienceModalCanceled()"
+></app-experience-modal>
+
